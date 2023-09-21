@@ -12,12 +12,13 @@ boarding_report_file = None
 st.title("Bookings Helper")
 
 st.header('Purpose:')
-st.text('This tool is meant to help understand what occupancy will look like in coming days or weeks.')
-st.text('Upload just two files, specify how many days forward you would like to look, and then run the analysis.')
-st.text('You will see bookings already made, for both daycare and boarding, and the average booking count by day of the week')
-st.text('Please note that many customers make visits without scheduling or may not do it until the night before,')
-st.text('expect more dogs than what is scheduled. Also, keep in mind that these averages are simple means. It can be')
-st.text('skewed by single high-volume days, such as a holiday.')
+st.text('This tool is meant to help understand what occupancy will look like in coming days')
+st.text('or weeks. Upload just two files, specify how many days forward you would like to')
+st.text('look, and then run the analysis. You will see bookings already made, for both daycare')
+st.text('and boarding, and the average booking count by day of the week. Please note that many')
+st.text('customers make visits without scheduling or may not do it until the night before, so')
+st.text('expect more dogs than what is scheduled. Also, keep in mind that these averages are '
+st.text('simple means. It can be skewed by single high-volume days, such as a holiday.')
 
 st.header('Instructions:')
 
