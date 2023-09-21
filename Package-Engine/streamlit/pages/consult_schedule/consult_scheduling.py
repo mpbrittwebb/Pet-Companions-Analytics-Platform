@@ -12,6 +12,7 @@ def bookings(daycare_df, future_days, boarders):
     schedule = pd.DataFrame()
     schedule['Day of the Week'] = ''
     schedule['Date'] = ''
+    schedule['Total Occupancy'] = 0
     schedule['Scheduled Daycare'] = ''
     schedule['Avg Daycare Dogs over Last 4 Weeks'] = 0
     schedule['Scheduled Boarders'] = 0
@@ -21,12 +22,15 @@ def bookings(daycare_df, future_days, boarders):
         day = date.today() + timedelta(days=i+1)
         schedule.loc[i, 'Date'] = day
         schedule.loc[i, 'Day of the Week'] = day.strftime('%A')
-        schedule.loc[i, 'Scheduled Daycare'] = len(daycare_df[daycare_df['Date']==day])
+        scheduled_daycare = len(daycare_df[daycare_df['Date']==day])
+        schedule.loc[i, 'Scheduled Daycare'] = scheduled_daycare
         schedule.loc[i, 'Avg Daycare Dogs over Last 4 Weeks'] = past.loc[past['Day of Week']==day.strftime('%A'), 'Average Visits'].reset_index(drop=True)[0]
         schedule.loc[i, 'Avg Boarding Dogs over Last 4 Weeks'] = boarders.loc[boarders['Date'] == day, 'Average Boarders'].reset_index(drop=True)[0]
-        schedule.loc[i, 'Scheduled Boarders'] = boarders.loc[boarders['Date'] == day, 'Boarders'].reset_index(drop=True)[0]
+        scheduled_boarders = boarders.loc[boarders['Date'] == day, 'Boarders'].reset_index(drop=True)[0]
+        schedule.loc[i, 'Scheduled Boarders'] = scheduled_boarders
+        schedule.loc[i, 'Total Occupancy'] = scheduled_daycare + scheduled_boarders
         
-    return schedule[['Day of the Week', 'Date', 'Scheduled Daycare', 'Avg Daycare Dogs over Last 4 Weeks', 'Scheduled Boarders', 'Avg Boarding Dogs over Last 4 Weeks']]
+    return schedule[['Day of the Week', 'Date', 'Total Occupancy', 'Scheduled Daycare', 'Avg Daycare Dogs over Last 4 Weeks', 'Scheduled Boarders', 'Avg Boarding Dogs over Last 4 Weeks']]
         
 
 def past_bookings(daycare_df):
