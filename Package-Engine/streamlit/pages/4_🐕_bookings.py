@@ -17,8 +17,8 @@ st.text('or weeks. Upload just two files, specify how many days forward you woul
 st.text('look, and then run the analysis. You will see bookings already made, for both daycare')
 st.text('and boarding, and the average booking count by day of the week. Please note that many')
 st.text('customers make visits without scheduling or may not do it until the night before, so')
-st.text('expect more dogs than what is scheduled. Also, keep in mind that these averages are '
-st.text('simple means. It can be skewed by single high-volume days, such as a holiday.')
+st.text('expect more dogs than what is scheduled. Also, keep in mind that these averages are')
+st.text('simply a mean. It can be skewed by single high-volume days, such as a holiday.')
 
 st.header('Instructions:')
 
