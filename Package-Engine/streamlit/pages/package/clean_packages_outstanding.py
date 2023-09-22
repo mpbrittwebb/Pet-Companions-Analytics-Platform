@@ -155,13 +155,18 @@ def daycare_visits(df, daycare_df):
     
     df['Daycare Visits Last 90 Days'] = 0
     df['Suggested Renewal Date'] = ''
+    df['Reintroduction needed?'] = ''
     
     
     days_since = date.today() - timedelta(days=90)
     for name in customer_names:
-        df.loc[df['Client']==name, 'Daycare Visits Last 90 Days'] = len(daycare_df[(daycare_df['Client']==name) & (daycare_df['Date'] >= days_since) & (daycare_df['Date'] <= date.today())])
+        visits = len(daycare_df[(daycare_df['Client']==name) & (daycare_df['Date'] >= days_since) & (daycare_df['Date'] <= date.today())])
+        df.loc[df['Client']==name, 'Daycare Visits Last 90 Days'] = visits
         test = daycare_df[(daycare_df['Client']==name) & (daycare_df['Date'] >= date.today())]
         df = suggested_renewal(name, df, daycare_df)
+        
+        if visits == 0:df.loc[df['Client']==name, 'Reintroduction needed?'] = 'Yes'
+        else: df.loc[df['Client']==name, 'Reintroduction needed?'] = 'No'
         
     return df
 
