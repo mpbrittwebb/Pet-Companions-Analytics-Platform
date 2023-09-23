@@ -1,6 +1,7 @@
 import pandas as pd
 import numpy as np
 from datetime import datetime, date, timedelta
+import streamlit as st
 
 def preprocess(df):
     
@@ -41,6 +42,7 @@ def average(df):
     
     return df
 
+st.cache_data
 def boarding(file):
     df = pd.read_excel(file)
     df = preprocess(df)

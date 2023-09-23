@@ -4,6 +4,7 @@ import streamlit as st
 from datetime import datetime, timedelta, date
 from pages.consult_schedule.boarding_report import boarding
 
+st.cache_data
 def bookings(daycare_df, future_days, boarders):
     
     past = past_bookings(daycare_df)
