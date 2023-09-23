@@ -20,7 +20,7 @@ st.subheader('Step 1: Login to KC')
 st.text("1. Login to Kennel Connection using web access")
 
 st.subheader("Step 2: Select the metric to examine")
-options = st.selectbox('Pick a metric to examine', ('None', 'Daycare Visits','Boarding Visits'))
+options = st.selectbox('Pick a metric to examine', ('None', 'Daycare Visits'))
 
 if options == 'Daycare Visits':
 
