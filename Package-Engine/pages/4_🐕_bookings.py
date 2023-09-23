@@ -32,7 +32,7 @@ st.text("2. Select view as 'Excel'." )
 st.text("3. Set Start Date to 2 months ago")
 st.text("4. Set End Date to 4 weeks from now")
 st.text("5. Click okay to export the file ")
-st.text("4. Upload 'BoardingOccupancy.xls'")
+st.text("6. Upload 'BoardingOccupancy.xls'")
 
 boarding_report_file = st.file_uploader(" Upload 'BoardingOccupancy.xls'")
 if not boarding_report_file == None: 
@@ -46,7 +46,7 @@ st.text("2. Select view as 'Excel'." )
 st.text("3. Set Start Date to 2 months ago")
 st.text("4. Set End Date to 4 weeks from now")
 st.text("5. Click okay to export the file ")
-st.text("4. Upload 'DaycareWeeklyReport.xls'")
+st.text("6. Upload 'DaycareWeeklyReport.xls'")
 
 daycare_report_file = st.file_uploader(" Upload 'DaycareWeeklyReport.xls'")
 if not daycare_report_file == None: 
