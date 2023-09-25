@@ -46,7 +46,7 @@ def fill_df(df):
     return df
 
 
-# @st.cache_data
+@st.cache_data
 def daycare_reporting(file):
     df = preprocess1(file)
     df = fill_df(df)

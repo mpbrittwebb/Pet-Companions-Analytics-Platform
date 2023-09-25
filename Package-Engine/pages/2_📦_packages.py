@@ -95,7 +95,7 @@ st.text("5. Upload 'CustomerList.xls'")
 customer_file = st.file_uploader(" Upload 'CustomerList.xls'")
 if not customer_file == None: 
     st.success(f"successfully uploaded {customer_file.name}!")
-    customer_df = Clean_Customer_Data(customer_file)
+    customer_df = Clean_Customer_Data(customer_file, deceased)
 
 
 st.subheader("Step 6: Sales Data")
