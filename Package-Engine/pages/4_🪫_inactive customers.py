@@ -72,8 +72,9 @@ if not sales_file == None:
 
     st.subheader('Step 4: Press Run Analysis')
     if st.button('Run Analysis'):
-        st.text('Please not that we blank rows are the result of missing data.')
+        st.text('Please note that blank rows are the result of missing data.')
         st.text('We do not have a lot of the data of old customers (or at least here).')
+        st.text('Deceased pets would only appear for active customers.')
         
         inactive_category_df = choose_level(category, inactive_df)
         st.dataframe(inactive_category_df)
