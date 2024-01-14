@@ -83,7 +83,6 @@ if not sales_file == None:
         st.text("Click the button to download this report. Set category to all if you want")
         st.text('a full report.')
 
-        if st.button('Download Report'):
-            csv = inactive_category_df.to_csv().encode('utf-8')
-            st.download_button(label='Download inactive customers', data=csv, 
-                                    file_name=f'inactive_customer_analysis_{str(date.today())}.csv', mime='text/csv')
+        csv_file = inactive_category_df.to_csv().encode('utf-8')
+        st.download_button(label='Download CSV', data=csv_file, file_name=f'inactive_customer_analysis_{str(date.today())}.csv', key='download_button')
+
