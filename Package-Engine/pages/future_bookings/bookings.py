@@ -2,7 +2,7 @@ import pandas as pd
 import numpy as np
 
 def process_daycare(file):
-    daycare = pd.read_excel(file, header=5)
+    daycare = pd.read_excel(file.name, header=5)
     daycare = daycare.filter(regex='^(?!Unnamed)')
     daycare.dropna(inplace=True)
     daycare['Date'] = daycare['In Date']
@@ -18,7 +18,7 @@ def process_daycare(file):
 
 def process_boarding(file):
 
-    boarding = pd.read_excel(file, header=5)
+    boarding = pd.read_excel(file.name, header=5)
     boarding = boarding.filter(regex='^(?!Unnamed)')
     boarding.dropna(inplace=True)
     boarding['Date'] = boarding['In Date']
