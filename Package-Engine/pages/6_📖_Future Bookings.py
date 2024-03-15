@@ -12,7 +12,7 @@ if not daycare_file == None:
     st.success(f"successfully uploaded {daycare_file.name}!")
     daycare_df = process_daycare(daycare_file)
 
-boarding_file = st.subheader("Upload Uninvoiced booking boarding", type=["xlsx", "xls"])
+boarding_file = st.file_uploader("Upload Uninvoiced booking boarding", type=["xlsx", "xls"])
 if not boarding_file == None: 
     st.success(f"successfully uploaded {boarding_file.name}!")
     boarding_df = process_boarding(boarding_file)
