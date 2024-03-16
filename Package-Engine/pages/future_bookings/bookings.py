@@ -47,6 +47,35 @@ def process_boarding(file):
             expanded_rows.append(new_row)
             
     # Create a new DataFrame from the list of expanded rows
+    boarding = pd.DataFrame(expanded_rows)
+
+    # Reset index to get a clean index for the new DataFrame
+    boarding.reset_index(drop=True, inplace=True)
+
+    boarding['In Date'] = pd.to_datetime(boarding['In Date'])
+    boarding['Out Date'] = pd.to_datetime(boarding['Out Date'])
+
+    # Create a new DataFrame to store the expanded rows
+    expanded_rows = []
+
+    # Iterate over each row in the original DataFrame
+    for _, row in boarding.iterrows():
+        # Generate a date range between 'In Date' and 'Out Date' inclusive
+        date_range = pd.date_range(row['In Date'], row['Out Date'], freq='D')
+        
+        # Create a new row for each date in the range
+        for date in date_range:
+            new_row = row.copy()
+            new_row['Date'] = date
+            
+            # Add new columns and set their values based on conditions
+            new_row['board_arrive'] = 1 if date == row['In Date'] else 0
+            new_row['board_continue'] = 1 if date != row['In Date'] and date != row['Out Date'] else 0
+            new_row['board_depart'] = 1 if date == row['Out Date'] else 0
+            
+            expanded_rows.append(new_row)
+
+    # Create a new DataFrame from the list of expanded rows
     expanded_boarding = pd.DataFrame(expanded_rows)
 
     # Reset index to get a clean index for the new DataFrame
